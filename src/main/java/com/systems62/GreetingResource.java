@@ -6,15 +6,22 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/hello")
+@Path("hello")
 public class GreetingResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response hello() {
+    @Path("myGuiEntity")
+    public Response myGuiEntitiy() {
         MyGuiEntity entity = new MyGuiEntity();
         entity.setField("Test");
         entity.setId(Math.round(Math.random()));
         return Response.ok(entity).build();
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello() {
+        return "Hello from RESTEasy Reactive";
     }
 }
